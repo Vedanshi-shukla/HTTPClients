@@ -1,0 +1,50 @@
+<div class="container mt-4">
+  <h1>Simple CRUD with Angular</h1>
+
+  <!-- Add Post Form -->
+  <div class="mb-4">
+    <h3>Add Post</h3>
+    <form (submit)="addPost()">
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input
+          type="text"
+          id="title"
+          [(ngModel)]="newPost.title"  
+          class="form-control"
+          name="title"
+          placeholder="Enter post title"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="body" class="form-label">Body</label>
+        <textarea
+          id="body"
+          [(ngModel)]="newPost.body"
+          class="form-control"
+          rows="3"
+          name="body"
+          placeholder="Enter post body"
+          required
+        ></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Add Post</button>
+    </form>
+  </div>
+
+  <!-- Posts List -->
+  <div>
+    <h3>Posts</h3>
+    <ul class="list-group">
+      <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let post of posts">
+        <div>
+          <h5>{{ post.title }}</h5>
+          <p>{{ post.body }}</p>
+        </div>
+        <button class="btn btn-danger btn-sm" (click)="deletePost(post.id)">Delete</button>
+      </li>
+    </ul>
+  </div>
+</div>
